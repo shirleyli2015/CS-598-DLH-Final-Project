@@ -1,4 +1,4 @@
-# CS 598 Deep Learning for Healthcare Final Project
+# CS 598 Deep Learning for Healthcare: Final Project
 ## Authors
 
 * Name: Shirley Li & Stanley Ho (Team 22)
@@ -15,7 +15,7 @@ Part of the code was originated from the [repo](https://github.com/sebbarb/time_
 
 Running the code requires Python 3. If you want to run the code directly on your local machine, install the requirements below:
 ```
-$ pip3 install -r requirements.txt
+$ pip3 install -r related_code/requirements.txt
 ```
 
 If you want to run the code in an isolated environment, you might leverage the _Dockerfile_ to setup such environment:
