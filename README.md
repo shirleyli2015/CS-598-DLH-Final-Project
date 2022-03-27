@@ -18,19 +18,21 @@ The dataset required is [MIMIC-III Clinical Database 1.4](https://physionet.org/
 To download the dataet, you should create a `mimic-iii-clinical-database-1.4` directory at the root of this repo, and download the files from the [MIMIC-III Clinical Database 1.4](https://physionet.org/content/mimiciii/1.4/) into the directory as follows:
 
 ```
-$ cd <repo>
-$ mkdir mimic-iii-clinical-database-1.4
-$ cd mimic-iii-clinical-database-1.4
-$ wget -r -N -c -np --user <user> --ask-password https://physionet.org/files/mimiciii/1.4/
+# Download dataset from PhysioNet.
+#
+$ wget -r -N -c -np --user <user> --ask-password https://physionet.org/files/mimiciii/1.4/ /tmp
 Password for user '<user>': *******
 --2022-03-27 00:27:50--  https://physionet.org/files/mimiciii/1.4/
 Resolving physionet.org (physionet.org)... 18.13.52.205
 Connecting to physionet.org (physionet.org)|18.13.52.205|:443... connected.
-HTTP request sent, awaiting response... 401 Unauthorized
-Authentication selected: Basic realm="PhysioNet", charset="UTF-8"
-Reusing existing connection to physionet.org:443.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: ‘physionet.org/files/mimiciii/1.4/index.html’
 ...
+
+# Unzip downloaded dataset.
+#
+$ gunzip /tmp/physionet.org/files/mimiciii/1.4/*.gz
+
+# Copy dataset into <repo>/mimic-iii-clinical-database-1.4.
+#
+$ mkdir <repo>/mimic-iii-clinical-database-1.4
+$ mv /tmp/physionet.org/files/mimiciii/1.4/*.csv <repo>/mimic-iii-clinical-database-1.4
 ```
