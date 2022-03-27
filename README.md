@@ -1,14 +1,13 @@
-# Benchmarking Deep Learning Architectures for predicting Readmission to the ICU and Describing patients-at-Risk
+# CS 598 Deep Learning for Healthcare Final Project
+## Authors
 
-This repository contains code related to the publication:
+* Name: Shirley Li & Stanley Ho (Team 22)
+* Emails: _{qiuyuli2, smho2}@illinois.edu_
+## Introduction
 
-_Benchmarking Deep Learning Architectures for predicting Readmission to the ICU and Describing patients-at-Risk_
+This repository contains code for reproducing results and performing additional ablations for the publication:
 
-by _Sebastiano Barbieri, James Kemp, Oscar Perez-Concha, Sradha Kotwal, Martin Gallagher, Angus Ritchie, Louisa Jorm_
+_Barbieri, Sebastiano et al. “Benchmarking Deep Learning Architectures for Predicting Readmission to the ICU and Describing Patients-at-Risk.” Scientific reports vol. 10,1 1111. 24 Jan. 2020_, https://doi.org/10.1038/s41598-020-58053-z
 
-_Nature Scientific Reports_
-
-https://www.nature.com/articles/s41598-020-58053-z
-
-In case you have any questions, contact me at s.barbieri /AT/ unsw.edu.au
+Part of the code was originated from the [repo](https://github.com/sebbarb/time_aware_attention) from the original authors of the publication.
 
