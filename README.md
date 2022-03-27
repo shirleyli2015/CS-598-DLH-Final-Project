@@ -11,7 +11,27 @@ _Barbieri, Sebastiano et al. “Benchmarking Deep Learning Architectures for Pre
 
 Part of the code was originated from the [repo](https://github.com/sebbarb/time_aware_attention) from the original authors of the publication.
 
-## Dataset
+## Requirements
+
+Running the code requires Python 3. If you want to run the code directly on your local machine, install the requirements below:
+```
+$ pip3 install -r requirements.txt
+```
+
+If you want to run the code in an isolated environment, you might leverage the _Dockerfile_ to setup such environment:
+```
+# Build the container image for our environment.
+#
+$ docker build . -f Dockerfile -t cs598-dlh-project-env
+
+# Run the container image and mount this repo into /workspace directory into container.
+#
+$ docker run -v <repo>:/workspace -it cs598-dlh-project-env
+root@...# cd /workspace
+root@...#
+```
+
+## Data
 
 The dataset required is [MIMIC-III Clinical Database 1.4](https://physionet.org/content/mimiciii/1.4/) which is available via [PhysioNet](https://physionet.org/) by request To download the dataet, you should create a `mimic-iii-clinical-database-1.4` directory at the root of this repo, and download the files in the dataset as follows:
 
@@ -34,24 +54,36 @@ $ gunzip /tmp/physionet.org/files/mimiciii/1.4/*.gz
 $ mkdir <repo>/mimic-iii-clinical-database-1.4
 $ mv /tmp/physionet.org/files/mimiciii/1.4/*.csv <repo>/mimic-iii-clinical-database-1.4
 ```
-## Preprocessing Data
+## Preprocessing
 
-Preprocessing data from the dataset is required before we can train and test the models. To do so,
+To preprocess the data for training the model(s) in the paper, run these commands:
 ```
-# Build the container image for our environment.
-#
-$ docker build . -f Dockerfile -t cs598-dlh-project-env
-
-# Run the container image and mount this repo into /workspace directory into container.
-#
-$ docker run -v <repo>:/workspace -it cs598-dlh-project-env
-root@...#
-
 # Run various pre-processing scripts under related_code directory.
 #
-root@...# cd workspace/related_code
-root@...# python3 1_preprocessing_ICU_PAT_ADMIT.py
-root@...# python3 2_preprocessing_reduce_charts.py
-...
-root@...# python3 7_preprocessing_create_arrays.py
+$ cd <repo>/related_code
+$ python3 1_preprocessing_ICU_PAT_ADMIT.py
+$ python3 2_preprocessing_reduce_charts.py
+$ python3 3_preprocessing_reduce_outputs.py
+$ python3 4_preprocessing_merge_charts_outputs.py
+$ python3 5_preprocessing_CHARTS_PRESCRIPTIONS.py
+$ python3 6_preprocessing_DIAGNOSES_PROCEDURES.py
+$ python3 7_preprocessing_create_arrays.py
+```
+## Training
+
+To train the model(s) in the paper, run these commands:
+```
+# Train a model.
+#
+$ cd <repo>/related_code
+$ python3 train.py
+```
+## Evaluation
+
+To evaluate the model(s) in the paper, run these commands:
+```
+# Evaluate a model.
+#
+$ cd <repo>/related_code
+$ python3 test.py
 ```
