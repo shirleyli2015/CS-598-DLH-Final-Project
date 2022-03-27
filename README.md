@@ -13,9 +13,7 @@ Part of the code was originated from the [repo](https://github.com/sebbarb/time_
 
 ## Dataset
 
-The dataset required is [MIMIC-III Clinical Database 1.4](https://physionet.org/content/mimiciii/1.4/), and it is available via [PhysioNet](https://physionet.org/) by request.
-
-To download the dataet, you should create a `mimic-iii-clinical-database-1.4` directory at the root of this repo, and download the files from the [MIMIC-III Clinical Database 1.4](https://physionet.org/content/mimiciii/1.4/) into the directory as follows:
+The dataset required is [MIMIC-III Clinical Database 1.4](https://physionet.org/content/mimiciii/1.4/) which is available via [PhysioNet](https://physionet.org/) by request To download the dataet, you should create a `mimic-iii-clinical-database-1.4` directory at the root of this repo, and download the files in the dataset as follows:
 
 ```
 # Download dataset from PhysioNet.
@@ -35,4 +33,25 @@ $ gunzip /tmp/physionet.org/files/mimiciii/1.4/*.gz
 #
 $ mkdir <repo>/mimic-iii-clinical-database-1.4
 $ mv /tmp/physionet.org/files/mimiciii/1.4/*.csv <repo>/mimic-iii-clinical-database-1.4
+```
+## Preprocessing Data
+
+Preprocessing data from the dataset is required before we can train and test the models. To do so,
+```
+# Build the container image for our environment.
+#
+$ docker build . -f Dockerfile -t cs598-dlh-project-env
+
+# Run the container image and mount this repo into /workspace directory into container.
+#
+$ docker run -v <repo>:/workspace -it cs598-dlh-project-env
+root@...#
+
+# Run various pre-processing scripts under related_code directory.
+#
+root@...# cd workspace/related_code
+root@...# python3 1_preprocessing_ICU_PAT_ADMIT.py
+root@...# python3 2_preprocessing_reduce_charts.py
+...
+root@...# python3 7_preprocessing_create_arrays.py
 ```
