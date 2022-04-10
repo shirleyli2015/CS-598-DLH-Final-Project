@@ -90,8 +90,8 @@ $ ./train_model.sh
 12) MCE + RNN
 13) MCE + Attention
 14) Logistic Regression
-15) *ABLATION* ODE
-16) *ABLATION* RNN
+15) *ABLATION* ODE only
+16) *ABLATION* RNN only
 17) QUIT
 Which model do you want to train? 2
 ====================================
@@ -122,8 +122,8 @@ $ ./eval_model.sh
 12) MCE + RNN
 13) MCE + Attention
 14) Logistic Regression
-15) *ABLATION* ODE
-16) *ABLATION* RNN
+15) *ABLATION* ODE only
+16) *ABLATION* RNN only
 17) QUIT
 Which model do you want to evaluate? 14
 ====================================
@@ -165,7 +165,7 @@ We have also ablated additional model(s) with the following results:
 
 | Model | Average Precision | AUROC | F1 Score | Sensitivity | Specificity |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|RNN|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
+|RNN only|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
 
 ---
 
