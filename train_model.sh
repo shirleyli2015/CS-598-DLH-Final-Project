@@ -19,6 +19,8 @@ options=("ODE + RNN + Attention" \
          "MCE + RNN" \
          "MCE + Attention" \
          "Logistic Regression" \
+         "*ABLATION* ODE" \
+         "*ABLATION* RNN" \
          "QUIT")
 separator="===================================="
 model=""
@@ -94,6 +96,16 @@ do
             ;;
         "Logistic Regression")
             model="logistic_regression"
+            modelName=$opt
+            break
+            ;;
+        "*ABLATION* ODE")
+            model="ode"
+            modelName=$opt
+            break
+            ;;
+        "*ABLATION* RNN")
+            model="birnn"
             modelName=$opt
             break
             ;;

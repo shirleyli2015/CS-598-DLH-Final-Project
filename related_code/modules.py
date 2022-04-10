@@ -1167,4 +1167,144 @@ elif hp.net_variant == 'mce_birnn_attention':
       out = self.fc_all(self.dropout(all)).squeeze()
 
       return out, []
+
+elif hp.net_variant == 'ode':
+  # Attention Only
+  class Net(nn.Module):
+    def __init__(self, num_static, num_dp_codes, num_cp_codes):
+      super(Net, self).__init__()
+
+      # Embedding dimensions
+      self.embed_dp_dim = int(2*np.ceil(num_dp_codes**0.25))+1
+      self.embed_cp_dim = int(2*np.ceil(num_cp_codes**0.25))+1
+
+      # Embedding layers
+      self.embed_dp = nn.Embedding(num_embeddings=num_dp_codes, embedding_dim=self.embed_dp_dim, padding_idx=0)
+      self.embed_cp = nn.Embedding(num_embeddings=num_cp_codes, embedding_dim=self.embed_cp_dim, padding_idx=0)
+
+      # ODE layers
+      self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+      self.ode_dp = ODENet(self.device, self.embed_dp_dim, self.embed_dp_dim, output_dim=self.embed_dp_dim, augment_dim=0, time_dependent=False, non_linearity='softplus', tol=1e-3, adjoint=True)
+      self.ode_cp = ODENet(self.device, self.embed_cp_dim, self.embed_cp_dim, output_dim=self.embed_cp_dim, augment_dim=0, time_dependent=False, non_linearity='softplus', tol=1e-3, adjoint=True)
+
+      # Fully connected output
+      self.fc_dp  = nn.Linear(self.embed_dp_dim, 1)
+      self.fc_cp  = nn.Linear(self.embed_cp_dim, 1)
+      self.fc_all = nn.Linear(num_static + 2, 1)
+
+      # Others
+      self.dropout = nn.Dropout(p=0.5)
+
+    def forward(self, stat, dp, cp, dp_t, cp_t):
+      # Embedding
+      ## output dim: batch_size x seq_len x embedding_dim
+      embedded_dp = self.embed_dp(dp)
+      embedded_cp = self.embed_cp(cp)
+
+      # ODE
+      ## Round times
+      dp_t = torch.round(100*dp_t)/100
+      cp_t = torch.round(100*cp_t)/100
+
+      embedded_dp_long = embedded_dp.view(-1, self.embed_dp_dim)
+      dp_t_long = dp_t.view(-1)
+      dp_t_long_unique, inverse_indices = torch.unique(dp_t_long, sorted=True, return_inverse=True)
+      ode_dp_long = self.ode_dp(embedded_dp_long, dp_t_long_unique)
+      ode_dp_long = ode_dp_long[inverse_indices, torch.arange(0, inverse_indices.size(0)), :]
+      ode_dp = ode_dp_long.view(dp.size(0), dp.size(1), self.embed_dp_dim)
+
+      embedded_cp_long = embedded_cp.view(-1, self.embed_cp_dim)
+      cp_t_long = cp_t.view(-1)
+      cp_t_long_unique, inverse_indices = torch.unique(cp_t_long, sorted=True, return_inverse=True)
+      ode_cp_long = self.ode_cp(embedded_cp_long, cp_t_long_unique)
+      ode_cp_long = ode_cp_long[inverse_indices, torch.arange(0, inverse_indices.size(0)), :]
+      ode_cp = ode_cp_long.view(cp.size(0), cp.size(1), self.embed_cp_dim)
+
+      ## Dropout
+      ode_dp = self.dropout(ode_dp)
+      ode_cp = self.dropout(ode_cp)
+
+      # Scores
+      score_dp = self.fc_dp(ode_dp)
+      score_cp = self.fc_cp(ode_cp)
+      score_dp = score_dp[:,-1,:]
+      score_cp = score_cp[:,-1,:]
+
+      # Concatenate to variable collection
+      all = torch.cat((stat, score_dp, score_cp), dim=1)
       
+      # Final linear projection
+      out = self.fc_all(self.dropout(all)).squeeze()
+
+      return out, []
+
+elif hp.net_variant == 'birnn':
+  # GRU
+  class Net(nn.Module):
+    def __init__(self, num_static, num_dp_codes, num_cp_codes):
+      super(Net, self).__init__()
+
+      # Embedding dimensions
+      self.embed_dp_dim = int(np.ceil(num_dp_codes**0.25))
+      self.embed_cp_dim = int(np.ceil(num_cp_codes**0.25))
+
+      # Embedding layers
+      self.embed_dp = nn.Embedding(num_embeddings=num_dp_codes, embedding_dim=self.embed_dp_dim, padding_idx=0)
+      self.embed_cp = nn.Embedding(num_embeddings=num_cp_codes, embedding_dim=self.embed_cp_dim, padding_idx=0)
+
+      # GRU layers
+      self.gru_dp_fw = nn.GRU(input_size=self.embed_dp_dim, hidden_size=self.embed_dp_dim, num_layers=1, batch_first=True)
+      self.gru_cp_fw = nn.GRU(input_size=self.embed_cp_dim, hidden_size=self.embed_cp_dim, num_layers=1, batch_first=True)
+      self.gru_dp_bw = nn.GRU(input_size=self.embed_dp_dim, hidden_size=self.embed_dp_dim, num_layers=1, batch_first=True)
+      self.gru_cp_bw = nn.GRU(input_size=self.embed_cp_dim, hidden_size=self.embed_cp_dim, num_layers=1, batch_first=True)
+      
+      # Fully connected output
+      self.fc_dp  = nn.Linear(2*self.embed_dp_dim, 1)
+      self.fc_cp  = nn.Linear(2*self.embed_cp_dim, 1)
+      self.fc_all = nn.Linear(num_static + 2, 1)
+      
+      # Others
+      self.dropout = nn.Dropout(p=0.5)
+
+    def forward(self, stat, dp, cp, dp_t, cp_t):
+      # Embedding
+      ## output dim: batch_size x seq_len x embedding_dim
+      embedded_dp_fw = self.embed_dp(dp)
+      embedded_cp_fw = self.embed_cp(cp)
+      embedded_dp_bw = torch.flip(embedded_dp_fw, [1])
+      embedded_cp_bw = torch.flip(embedded_cp_fw, [1])
+
+      ## Dropout
+      embedded_dp_fw = self.dropout(embedded_dp_fw)
+      embedded_cp_fw = self.dropout(embedded_cp_fw)
+      embedded_dp_bw = self.dropout(embedded_dp_bw)
+      embedded_cp_bw = self.dropout(embedded_cp_bw)
+
+      # GRU
+      ## output dim rnn:        batch_size x seq_len x embedding_dim
+      ## output dim rnn_hidden: batch_size x 1 x embedding_dim
+      rnn_dp_fw, rnn_hidden_dp_fw = self.gru_dp_fw(embedded_dp_fw)
+      rnn_cp_fw, rnn_hidden_cp_fw = self.gru_cp_fw(embedded_cp_fw)
+      rnn_dp_bw, rnn_hidden_dp_bw = self.gru_dp_bw(embedded_dp_bw)
+      rnn_cp_bw, rnn_hidden_cp_bw = self.gru_cp_bw(embedded_cp_bw)   
+
+      ## output dim rnn_hidden: batch_size x embedding_dim
+      rnn_hidden_dp_fw = rnn_hidden_dp_fw.view(-1, self.embed_dp_dim)
+      rnn_hidden_cp_fw = rnn_hidden_cp_fw.view(-1, self.embed_cp_dim)
+      rnn_hidden_dp_bw = rnn_hidden_dp_bw.view(-1, self.embed_dp_dim)
+      rnn_hidden_cp_bw = rnn_hidden_cp_bw.view(-1, self.embed_cp_dim)
+      ## concatenate forward and backward: batch_size x 2*embedding_dim
+      rnn_hidden_dp = torch.cat((rnn_hidden_dp_fw, rnn_hidden_dp_bw), dim=-1)
+      rnn_hidden_cp = torch.cat((rnn_hidden_cp_fw, rnn_hidden_cp_bw), dim=-1)
+
+      # Scores
+      score_dp = self.fc_dp(self.dropout(rnn_hidden_dp))
+      score_cp = self.fc_cp(self.dropout(rnn_hidden_cp))
+
+      # Concatenate to variable collection
+      all = torch.cat((stat, score_dp, score_cp), dim=1)
+
+      # Final linear projection
+      out = self.fc_all(self.dropout(all)).squeeze()
+
+      return out, []

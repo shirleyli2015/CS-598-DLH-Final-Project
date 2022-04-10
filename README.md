@@ -90,13 +90,17 @@ $ ./train_model.sh
 12) MCE + RNN
 13) MCE + Attention
 14) Logistic Regression
-15) QUIT
+15) *ABLATION* ODE
+16) *ABLATION* RNN
+17) QUIT
 Which model do you want to train? 2
 ====================================
 Training ODE + RNN (ode_birnn) ...
 ====================================
 ...
 ```
+Depending on the model, the training time could take somewhere between 1.5 hour to 20 hours.
+
 ## Evaluation
 
 To evaluate the model(s) in the paper, run these commands:
@@ -118,13 +122,16 @@ $ ./eval_model.sh
 12) MCE + RNN
 13) MCE + Attention
 14) Logistic Regression
-15) QUIT
+15) *ABLATION* ODE
+16) *ABLATION* RNN
+17) QUIT
 Which model do you want to evaluate? 14
 ====================================
 Evaluating Logistic Regression (logistic_regression) ...
 ====================================
 ...
 ```
+The evaluation time for one model is usually under one hour.
 
 ## Results
 
@@ -146,3 +153,4 @@ We have reproduced the model(s) in the paper with the following results:
 |MCE + RNN|0.297 [0.29,0.305]|0.726 [0.723,0.729]|0.359 [0.354,0.363]|0.667 [0.658,0.675]|0.692 [0.685,0.699]|
 |MCE + Attention|0.282 [0.273,0.291]|0.693 [0.69,0.696]|0.322 [0.318,0.327]|0.675 [0.661,0.689]|0.624 [0.609,0.638]|
 |Logistic Regression|0.257 [0.248,0.266]|0.663 [0.66,0.667]|0.300 [0.296,0.304]|0.596 [0.586,0.607]|0.667 [0.656,0.678]|
+|Albation: RNN|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
