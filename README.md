@@ -169,7 +169,7 @@ We have also ablated additional model(s) with the following results:
 
 ---
 
-Below is the odds ratios for experiencing an adverse outcome following discharge from the intensive care unit, based on the "Attenion (concatenated time)" model from our reproduction study:
+Below are the odds ratios for experiencing an adverse outcome following discharge from the intensive care unit, based on the "Attenion (concatenated time)" model from our reproduction study:
 
 | Covariate                                                  | OR [95% CI]          |
 |------------------------------------------------------------|----------------------|
@@ -201,7 +201,7 @@ Below is the odds ratios for experiencing an adverse outcome following discharge
 
 ---
 
-Below is the ICD-9 diagnosis and procedure codes and medications assigned high scores by the "Attention (concatenated time)" model from our reproduction study:
+Below are the ICD-9 diagnosis and procedure codes and medications assigned scores by the "Attention (concatenated time)" model from our reproduction study:
 
 | DESCRIPTION                                                                 | Score [95% CI]  |
 |-----------------------------------------------------------------------------|-----------------|
