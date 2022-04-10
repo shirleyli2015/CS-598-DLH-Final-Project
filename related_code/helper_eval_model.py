@@ -5,8 +5,6 @@
 
 from hyperparameters import Hyperparameters as hp
 import sys
-import test
-import test_train_logreg
 
 models = {'birnn_concat_time_delta',
           'birnn_concat_time_delta_attention',
@@ -40,10 +38,17 @@ if __name__ == '__main__':
     print(f'Evaluating {modelName} ({model}) ...')
     print(f'{separator}')
 
+    # Configure model to train.
+    hp.net_variant = model
+
+    # Notice that we must customize the hyperparamters first,
+    # before importing test and test_train_logreg as both
+    # will import hyperparamters.
+    import test
+    import test_train_logreg
+
+    # Evaluate the model.
     if model == 'logistic_regression':
         test_train_logreg.main()
     else:
-        # Configure model to train.
-        hp.net_variant = model
-        # Test the model.
         test.main()

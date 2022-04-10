@@ -5,7 +5,6 @@
 
 from hyperparameters import Hyperparameters as hp
 import sys
-import train
 
 models = {'birnn_concat_time_delta',
           'birnn_concat_time_delta_attention',
@@ -45,5 +44,10 @@ if __name__ == '__main__':
 
     # Configure model to train.
     hp.net_variant = model
+
+    # Notice that we must customize the hyperparamters first,
+    # before importing train which will import hyperparamters.
+    import train
+
     # Train the model.
     train.main()
