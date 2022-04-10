@@ -30,8 +30,8 @@ class Hyperparameters:
   # net_variant = 'birnn_concat_time_delta'
   # net_variant = 'birnn_concat_time_delta_attention'
   # net_variant = 'birnn_time_decay'#
-  # net_variant = 'birnn_time_decay_attention'#
-  net_variant = 'ode_birnn'#
+  net_variant = 'birnn_time_decay_attention'#
+  # net_variant = 'ode_birnn'#
   # net_variant = 'ode_birnn_attention'#
   # net_variant = 'ode_attention'#
   # net_variant = 'attention_concat_time'
