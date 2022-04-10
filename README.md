@@ -99,7 +99,7 @@ Training ODE + RNN (ode_birnn) ...
 ====================================
 ...
 ```
-Depending on the model, the training time could take somewhere between 1.5 hour to 20 hours.
+Depending on the model, the training time ranges between 1.5 hour to 20 hours.
 
 ## Evaluation
 
@@ -131,7 +131,7 @@ Evaluating Logistic Regression (logistic_regression) ...
 ====================================
 ...
 ```
-The evaluation time for one model is usually under one hour.
+The evaluation time of one model is usually under an hour.
 ## Bayesian Interpretation
 
 To obtain odds ratios and risk-scores with credible intervals from the last fully connected layer of the “Attention (concatenated time)” model, run:
@@ -161,7 +161,7 @@ We have reproduced the model(s) in the paper with the following results:
 |MCE + Attention|0.282 [0.273,0.291]|0.693 [0.69,0.696]|0.322 [0.318,0.327]|0.675 [0.661,0.689]|0.624 [0.609,0.638]|
 |Logistic Regression|0.257 [0.248,0.266]|0.663 [0.66,0.667]|0.300 [0.296,0.304]|0.596 [0.586,0.607]|0.667 [0.656,0.678]|
 
-We have ablated additional model(s) with the following results:
+We have also ablated additional model(s) with the following results:
 
 | Model | Average Precision | AUROC | F1 Score | Sensitivity | Specificity |
 |:----:|:----:|:----:|:----:|:----:|:----:|
