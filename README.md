@@ -131,9 +131,7 @@ Evaluating Logistic Regression (logistic_regression) ...
 ====================================
 ...
 ```
-<<<<<<< HEAD
 The evaluation time for one model is usually under one hour.
-=======
 ## Bayesian Interpretation
 
 To obtain odds ratios and risk-scores with credible intervals from the last fully connected layer of the “Attention (concatenated time)” model, run:
@@ -141,7 +139,6 @@ To obtain odds ratios and risk-scores with credible intervals from the last full
 ```
 python3 bayesian_interpretation.py
 ```
->>>>>>> 72006385263d5377dd775cbbb75d3fabfe66a129
 
 ## Results
 
@@ -164,11 +161,11 @@ We have reproduced the model(s) in the paper with the following results:
 |MCE + Attention|0.282 [0.273,0.291]|0.693 [0.69,0.696]|0.322 [0.318,0.327]|0.675 [0.661,0.689]|0.624 [0.609,0.638]|
 |Logistic Regression|0.257 [0.248,0.266]|0.663 [0.66,0.667]|0.300 [0.296,0.304]|0.596 [0.586,0.607]|0.667 [0.656,0.678]|
 
-We have albated the following model(s) with the following results:
+We have ablated additional model(s) with the following results:
 
 | Model | Average Precision | AUROC | F1 Score | Sensitivity | Specificity |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|Albation: RNN|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
+|Ablation: RNN|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
 
 | Covariate                                                  | OR [95% CI]          |
 |------------------------------------------------------------|----------------------|
