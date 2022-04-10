@@ -1169,7 +1169,8 @@ elif hp.net_variant == 'mce_birnn_attention':
       return out, []
 
 elif hp.net_variant == 'ode':
-  # Attention Only
+  # ODE Only - THIS IS AN ABLATION!
+
   class Net(nn.Module):
     def __init__(self, num_static, num_dp_codes, num_cp_codes):
       super(Net, self).__init__()
@@ -1239,7 +1240,7 @@ elif hp.net_variant == 'ode':
       return out, []
 
 elif hp.net_variant == 'birnn':
-  # GRU
+  # GRU - THIS IS AN ABLATION!
   class Net(nn.Module):
     def __init__(self, num_static, num_dp_codes, num_cp_codes):
       super(Net, self).__init__()
