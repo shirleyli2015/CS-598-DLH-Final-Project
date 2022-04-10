@@ -165,7 +165,9 @@ We have also ablated additional model(s) with the following results:
 
 | Model | Average Precision | AUROC | F1 Score | Sensitivity | Specificity |
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|Ablation: RNN|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
+|RNN|0.302 [0.294,0.31]|0.733 [0.731,0.736]|0.365 [0.36,0.37]|0.701 [0.688,0.713]|00.665 [0.651,0.678]|
+
+Below is the odds ratios for experiencing an adverse outcome following discharge from the intensive care unit, based on the "Attenion (concatenated time)" model from our reproduction study:
 
 | Covariate                                                  | OR [95% CI]          |
 |------------------------------------------------------------|----------------------|
@@ -194,6 +196,8 @@ We have also ablated additional model(s) with the following results:
 | Ethnicity: Unable to Obtain                                | 0.852 [0.742, 0.978] |
 | Score: Diagnoses and Procedures                            | 1.73 [1.715, 1.745]  |
 | Score: Medications and Vital Signs                         | 1.8 [1.744, 1.858]   |
+
+Below is the ICD-9 diagnosis and procedure codes and medications assigned high scores by the "Attention (concatenated time)" model from our reproduction study:
 
 | DESCRIPTION                                                                 | Score [95% CI]  |
 |-----------------------------------------------------------------------------|-----------------|
