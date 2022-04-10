@@ -75,8 +75,27 @@ To train the model(s) in the paper, run these commands:
 ```
 # Train a model.
 #
-$ cd <repo>/related_code
-$ python3 train.py
+$ ./train_model.sh
+ 1) ODE + RNN + Attention
+ 2) ODE + RNN
+ 3) RNN (ODE time delay) + Attention
+ 4) RNN (ODE time delay)
+ 5) RNN (exp time delay) + Attention
+ 6) RNN (exp time delay)
+ 7) RNN (concatenated delta-time) + Attention
+ 8) RNN (concatenated delta-time)
+ 9) ODE + Attention
+10) Attention (concatenated time)
+11) MCE + RNN + Attention
+12) MCE + RNN
+13) MCE + Attention
+14) Logistic Regression
+15) QUIT
+Which model do you want to train? 2
+====================================
+Training ODE + RNN (ode_birnn) ...
+====================================
+...
 ```
 ## Evaluation
 
@@ -84,8 +103,27 @@ To evaluate the model(s) in the paper, run these commands:
 ```
 # Evaluate a model.
 #
-$ cd <repo>/related_code
-$ python3 test.py
+$ ./eval_model.sh
+ 1) ODE + RNN + Attention
+ 2) ODE + RNN
+ 3) RNN (ODE time delay) + Attention
+ 4) RNN (ODE time delay)
+ 5) RNN (exp time delay) + Attention
+ 6) RNN (exp time delay)
+ 7) RNN (concatenated delta-time) + Attention
+ 8) RNN (concatenated delta-time)
+ 9) ODE + Attention
+10) Attention (concatenated time)
+11) MCE + RNN + Attention
+12) MCE + RNN
+13) MCE + Attention
+14) Logistic Regression
+15) QUIT
+Which model do you want to evaluate? 14
+====================================
+Evaluating Logistic Regression (logistic_regression) ...
+====================================
+...
 ```
 
 ## Results

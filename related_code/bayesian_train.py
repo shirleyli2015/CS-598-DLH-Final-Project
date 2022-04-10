@@ -249,7 +249,7 @@ if __name__ == '__main__':
     trainloader, num_batches, pos_weight = get_trainloader(data, 'TRAIN')
 
   # Vocabulary sizes
-  num_static = num_static(data)
+  num_static = num_static_data(data)
   num_dp_codes, num_cp_codes = vocab_sizes(data)
 
   print('-----------------------------------------')

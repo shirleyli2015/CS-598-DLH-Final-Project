@@ -20,7 +20,7 @@ if __name__ == '__main__':
 
   # Get dictionaries
   static_vars, dict_dp, dict_cp = get_dictionaries(data)
-  num_static = num_static(data)
+  num_static = num_static_data(data)
   num_dp_codes, num_cp_codes = vocab_sizes(data)
 
   # ICD-9 Code descriptions

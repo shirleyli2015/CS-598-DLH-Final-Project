@@ -21,7 +21,7 @@ from pdb import set_trace as bp
 def round(num):
   return np.round(num*1000)/1000
 
-if __name__ == '__main__':
+def main():
   # Load icu_pat table
   print('Loading data...')
   icu_pat = pd.read_pickle(hp.data_dir + 'icu_pat_admit.pkl')
@@ -164,4 +164,5 @@ if __name__ == '__main__':
   print('Specificity: {} [{},{}]'.format(round(specificity_mean), round(specificity_lci), round(specificity_uci)))
   print('Done')
   
-
+if __name__ == '__main__':
+  main()

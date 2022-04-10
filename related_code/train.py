@@ -17,7 +17,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, average_precision_
 from pdb import set_trace as bp
 
 
-if __name__ == '__main__':
+def main():
   # Load data
   print('Load data...')
   data = np.load(hp.data_dir + 'data_arrays.npz', allow_pickle=True)
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     trainloader, num_batches, pos_weight = get_trainloader(data, 'TRAIN')
   
   # Vocabulary sizes
-  num_static = num_static(data)
+  num_static = num_static_data(data)
   num_dp_codes, num_cp_codes = vocab_sizes(data)
   
   print('-----------------------------------------')
@@ -89,3 +89,5 @@ if __name__ == '__main__':
   np.savez(logdir + 'epoch_times', epoch_times=epoch_times)
   print('Done')
   
+if __name__ == '__main__':
+  main()

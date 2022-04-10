@@ -45,7 +45,7 @@ def get_dictionaries(data):
   return data['static_vars'], data['dict_dp'][()], data['dict_cp'][()]
 
 
-def num_static(data):
+def num_static_data(data):
   return data['static_vars'].shape[0]
   
 

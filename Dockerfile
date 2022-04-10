@@ -1,3 +1,7 @@
+#
+# 2022 by Shirley Li, Stanley Ho
+# {qiuyuli2,smho2}@illinois.edu
+#
 FROM ubuntu:20.04
 
 RUN apt-get update && \

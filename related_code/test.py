@@ -22,7 +22,7 @@ from pdb import set_trace as bp
 def round(num):
   return np.round(num*1000)/1000
 
-if __name__ == '__main__':
+def main():
   # Load data
   print('Load data...')
   data = np.load(hp.data_dir + 'data_arrays.npz')
@@ -34,7 +34,7 @@ if __name__ == '__main__':
   row_ids = pd.DataFrame({'ROW_IDX': test_ids_patients.index}, index=test_ids_patients)
   
   # Vocabulary sizes
-  num_static = num_static(data)
+  num_static = num_static_data(data)
   num_dp_codes, num_cp_codes = vocab_sizes(data)
 
   # CUDA for PyTorch
@@ -45,12 +45,11 @@ if __name__ == '__main__':
   # Network
   net = Net(num_static, num_dp_codes, num_cp_codes).to(device)
   
-  print('Evaluate...')
   # Set log dir to read trained model from
   logdir = hp.logdir + hp.net_variant + '/'
 
   # Restore variables from disk
-  net.load_state_dict(torch.load(logdir + 'final_model.pt', map_location=device))
+  net.load_state_dict(torch.load(logdir + 'final_model.pt', map_location=device), strict=True)
 
   # Bootstrapping
   np.random.seed(hp.np_seed)
@@ -157,4 +156,5 @@ if __name__ == '__main__':
   print('Time: {} [{},{}] std: {}'.format(round(times_mean), round(times_lci), round(times_uci), round(times_std)))
   print('Done')
   
-
+if __name__ == '__main__':
+  main()
