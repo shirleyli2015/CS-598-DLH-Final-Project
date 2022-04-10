@@ -49,7 +49,7 @@ def main():
   logdir = hp.logdir + hp.net_variant + '/'
 
   # Restore variables from disk
-  net.load_state_dict(torch.load(logdir + 'final_model.pt', map_location=device), strict=True)
+  net.load_state_dict(torch.load(logdir + 'final_model.pt', map_location=device))
 
   # Bootstrapping
   np.random.seed(hp.np_seed)
