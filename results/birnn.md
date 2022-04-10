@@ -1,5 +1,6 @@
-## birnn
+## RNN only
 ```
+Net variant: birnn
 Average Precision: 0.302 [0.294,0.31]
 AUROC: 0.733 [0.731,0.736]
 F1: 0.365 [0.36,0.37]

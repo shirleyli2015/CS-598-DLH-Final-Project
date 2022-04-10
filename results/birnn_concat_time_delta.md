@@ -1,5 +1,6 @@
-## birnn_concat_time_delta
+## RNN (concatenated time-delta)
 ```
+Net variant: birnn_concat_time_delta
 Average Precision: 0.314 [0.306,0.323]
 AUROC: 0.737 [0.734,0.739]
 F1: 0.368 [0.363,0.373]

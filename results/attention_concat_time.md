@@ -1,5 +1,6 @@
-## attention_concat_time
+## Attention (concatenated time)
 ```
+Net variant: attention_concat_time
 Average Precision: 0.287 [0.278,0.295]
 AUROC: 0.716 [0.714,0.719]
 F1: 0.337 [0.332,0.342]

@@ -11,8 +11,8 @@ options=("ODE + RNN + Attention" \
          "RNN (ODE time delay)" \
          "RNN (exp time delay) + Attention" \
          "RNN (exp time delay)" \
-         "RNN (concatenated delta-time) + Attention" \
-         "RNN (concatenated delta-time)" \
+         "RNN (concatenated time-delta) + Attention" \
+         "RNN (concatenated time-delta)" \
          "ODE + Attention" \
          "Attention (concatenated time)" \
          "MCE + RNN + Attention" \
@@ -59,12 +59,12 @@ do
             modelName=$opt
             break
             ;;
-        "RNN (concatenated delta-time) + Attention")
+        "RNN (concatenated time-delta) + Attention")
             model="birnn_concat_time_delta_attention"
             modelName=$opt
             break
             ;;
-        "RNN (concatenated delta-time)")
+        "RNN (concatenated time-delta)")
             model="birnn_concat_time_delta"
             modelName=$opt
             break

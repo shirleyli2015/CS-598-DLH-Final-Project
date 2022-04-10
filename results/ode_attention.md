@@ -1,5 +1,6 @@
-## ode_attention
+## ODE + Attention
 ```
+Net variant: ode_attention
 Average Precision: 0.292 [0.284,0.3]
 AUROC: 0.724 [0.722,0.727]
 F1: 0.339 [0.335,0.344]

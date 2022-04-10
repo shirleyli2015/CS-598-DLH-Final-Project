@@ -1,5 +1,6 @@
-## mce_attention
+## MCE + Attention
 ```
+Net variant: mce_attention
 Average Precision: 0.282 [0.273,0.291]
 AUROC: 0.693 [0.69,0.696]
 F1: 0.322 [0.318,0.327]

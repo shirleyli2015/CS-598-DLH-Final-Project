@@ -1,5 +1,6 @@
-## birnn_time_decay_attention
+## RNN (exp time decay) + Attention
 ```
+Net variant: birnn_time_decay_attention
 Average Precision: 0.309 [0.302,0.317]
 AUROC: 0.74 [0.737,0.743]
 F1: 0.362 [0.357,0.367]

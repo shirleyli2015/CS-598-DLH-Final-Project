@@ -1,5 +1,6 @@
-## logistic regression
+## Logistic Regression
 ```
+Net variant: logistic_regression
 Average Precision: 0.257 [0.248,0.266]
 AUROC: 0.663 [0.66,0.667]
 F1: 0.3 [0.296,0.304]

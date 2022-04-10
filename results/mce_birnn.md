@@ -1,5 +1,6 @@
-## mce_birnn
+## MCE + RNN
 ```
+Net variant: mce_birnn
 Average Precision: 0.297 [0.29,0.305]
 AUROC: 0.726 [0.723,0.729]
 F1: 0.359 [0.354,0.363]

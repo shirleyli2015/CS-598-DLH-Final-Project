@@ -1,5 +1,6 @@
-## ode_birnn_attention
+## ODE + RNN + Attention
 ```
+Net variant: ode_birnn_attention
 Average Precision: 0.325 [0.317,0.334]
 AUROC: 0.744 [0.741,0.747]
 F1: 0.373 [0.368,0.377]

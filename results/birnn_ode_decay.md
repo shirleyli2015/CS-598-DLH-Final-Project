@@ -1,5 +1,6 @@
-## birnn_ode_decay
+## RNN (ODE time decay)
 ```
+Net variant: birnn_ode_decay
 Average Precision: 0.308 [0.301,0.315]
 AUROC: 0.735 [0.732,0.738]
 F1: 0.37 [0.365,0.375]

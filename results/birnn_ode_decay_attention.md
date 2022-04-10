@@ -1,5 +1,6 @@
-## birnn_ode_decay_attention
+## RNN (ODE time decay) + Attention
 ```
+Net variant: birnn_ode_decay_attention
 Average Precision: 0.321 [0.312,0.33]
 AUROC: 0.741 [0.738,0.743]
 F1: 0.375 [0.37,0.38]

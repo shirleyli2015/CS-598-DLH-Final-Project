@@ -1,5 +1,6 @@
-## ode_birnn
+## ODE + RNN
 ```
+Net variant: ode_birnn
 Average Precision: 0.319 [0.311,0.328]
 AUROC: 0.742 [0.739,0.745]
 F1: 0.379 [0.374,0.384]
