@@ -1,4 +1,4 @@
-## RNN (concatenated time-delta)
+## RNN (concatenated time delta)
 ```
 Net variant: birnn_concat_time_delta
 Average Precision: 0.314 [0.306,0.323]

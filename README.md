@@ -82,8 +82,8 @@ $ ./train_model.sh
  4) RNN (ODE time delay)
  5) RNN (exp time delay) + Attention
  6) RNN (exp time delay)
- 7) RNN (concatenated time-delta) + Attention
- 8) RNN (concatenated time-delta)
+ 7) RNN (concatenated time delta) + Attention
+ 8) RNN (concatenated time delta)
  9) ODE + Attention
 10) Attention (concatenated time)
 11) MCE + RNN + Attention
@@ -114,8 +114,8 @@ $ ./eval_model.sh
  4) RNN (ODE time delay)
  5) RNN (exp time delay) + Attention
  6) RNN (exp time delay)
- 7) RNN (concatenated time-delta) + Attention
- 8) RNN (concatenated time-delta)
+ 7) RNN (concatenated time delta) + Attention
+ 8) RNN (concatenated time delta)
  9) ODE + Attention
 10) Attention (concatenated time)
 11) MCE + RNN + Attention
