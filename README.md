@@ -11,9 +11,9 @@ _Barbieri, Sebastiano et al. “Benchmarking Deep Learning Architectures for Pre
 
 Part of the code was originated from the [repo](https://github.com/sebbarb/time_aware_attention) from the original authors of the publication.
 
-## Requirements
+## Requirements and Dependencies
 
-Running the code requires Python 3. If you want to run the code directly on your local machine, install the requirements below:
+Running the code requires Python 3. If you want to run the code directly on your local machine, install the required dependencies below:
 ```
 $ pip3 install -r related_code/requirements.txt
 ```
@@ -137,7 +137,6 @@ To obtain odds ratios and risk-scores with credible intervals from the last full
 ```
 python3 bayesian_interpretation.py
 ```
-
 ## Pretrained Embedding Weights
 
 There were four pretrained embeeding weights used by three of the models below:
