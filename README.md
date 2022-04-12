@@ -139,12 +139,12 @@ python3 bayesian_interpretation.py
 ```
 ## Pretrained Embedding Weights
 
-There are 14 models in the paper, and 3 of them require using pretrained embeeding weights:
+There are 14 models in the paper, and 3 of them require using pretrained embedding weights:
 1. MCE + RNN + Attention
 2. MCE + RNN
 3. MCE + Attention
 
-We obtained the pretrained embedding weights from the original authors, and the files are located in the [data](https://github.com/shirleyli2015/CS-598-DLH-Final-Project/blob/master/data/) directory.
+We obtained the pretrained embedding weights from the original authors, and they are located in the [data](https://github.com/shirleyli2015/CS-598-DLH-Final-Project/blob/master/data/) directory.
 ## Results
 
 We have reproduced the model(s) in the paper with the following results:
