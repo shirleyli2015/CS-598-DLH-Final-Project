@@ -138,6 +138,14 @@ To obtain odds ratios and risk-scores with credible intervals from the last full
 python3 bayesian_interpretation.py
 ```
 
+## Pretrained Embedding Weights
+
+There are four pretrained embeeding weights used by three of the models below:
+1. MCE + RNN + Attention
+2. MCE + RNN
+3. MCE + Attention
+
+The pretrained embedding weights are located in the [data](http://](https://github.com/shirleyli2015/CS-598-DLH-Final-Project/blob/master/data/) directory.
 ## Results
 
 We have reproduced the model(s) in the paper with the following results:
