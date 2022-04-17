@@ -1,4 +1,4 @@
-## RNN only + Attention
+## RNN + Attention
 ```
 Net variant: birnn_attention
 Average Precision: 0.297 [0.289,0.305]

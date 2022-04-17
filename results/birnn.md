@@ -1,4 +1,4 @@
-## RNN only
+## RNN
 ```
 Net variant: birnn
 Average Precision: 0.302 [0.294,0.31]
