@@ -1238,3 +1238,79 @@ elif hp.net_variant == 'birnn':
       out = self.fc_all(self.dropout(all)).squeeze()
 
       return out, []
+
+elif hp.net_variant == 'birnn_attention':
+  # GRU - THIS IS AN ABLATION!
+  class Net(nn.Module):
+    def __init__(self, num_static, num_dp_codes, num_cp_codes):
+      super(Net, self).__init__()
+
+      # Embedding dimensions
+      self.embed_dp_dim = int(np.ceil(num_dp_codes**0.25))
+      self.embed_cp_dim = int(np.ceil(num_cp_codes**0.25))
+
+      # Embedding layers
+      self.embed_dp = nn.Embedding(num_embeddings=num_dp_codes, embedding_dim=self.embed_dp_dim, padding_idx=0)
+      self.embed_cp = nn.Embedding(num_embeddings=num_cp_codes, embedding_dim=self.embed_cp_dim, padding_idx=0)
+
+      # GRU layers
+      self.gru_dp_fw = nn.GRU(input_size=self.embed_dp_dim, hidden_size=self.embed_dp_dim, num_layers=1, batch_first=True)
+      self.gru_cp_fw = nn.GRU(input_size=self.embed_cp_dim, hidden_size=self.embed_cp_dim, num_layers=1, batch_first=True)
+      self.gru_dp_bw = nn.GRU(input_size=self.embed_dp_dim, hidden_size=self.embed_dp_dim, num_layers=1, batch_first=True)
+      self.gru_cp_bw = nn.GRU(input_size=self.embed_cp_dim, hidden_size=self.embed_cp_dim, num_layers=1, batch_first=True)
+
+      # Attention layers
+      self.attention_dp = Attention(embedding_dim=2*self.embed_dp_dim)
+      self.attention_cp = Attention(embedding_dim=2*self.embed_cp_dim)
+
+      # Fully connected output
+      self.fc_dp  = nn.Linear(2*self.embed_dp_dim, 1)
+      self.fc_cp  = nn.Linear(2*self.embed_cp_dim, 1)
+      self.fc_all = nn.Linear(num_static + 2, 1)
+
+      # Others
+      self.dropout = nn.Dropout(p=0.5)
+
+    def forward(self, stat, dp, cp, dp_t, cp_t):
+      # Embedding
+      ## output dim: batch_size x seq_len x embedding_dim
+      embedded_dp_fw = self.embed_dp(dp)
+      embedded_cp_fw = self.embed_cp(cp)
+      embedded_dp_bw = torch.flip(embedded_dp_fw, [1])
+      embedded_cp_bw = torch.flip(embedded_cp_fw, [1])
+
+      ## Dropout
+      embedded_dp_fw = self.dropout(embedded_dp_fw)
+      embedded_cp_fw = self.dropout(embedded_cp_fw)
+      embedded_dp_bw = self.dropout(embedded_dp_bw)
+      embedded_cp_bw = self.dropout(embedded_cp_bw)
+
+      # GRU
+      ## output dim rnn:        batch_size x seq_len x embedding_dim
+      ## output dim rnn_hidden: batch_size x 1 x embedding_dim
+      rnn_dp_fw, rnn_hidden_dp_fw = self.gru_dp_fw(embedded_dp_fw)
+      rnn_cp_fw, rnn_hidden_cp_fw = self.gru_cp_fw(embedded_cp_fw)
+      rnn_dp_bw, rnn_hidden_dp_bw = self.gru_dp_bw(embedded_dp_bw)
+      rnn_cp_bw, rnn_hidden_cp_bw = self.gru_cp_bw(embedded_cp_bw)
+
+      # concatenate forward and backward
+      ## output dim: batch_size x seq_len x 2*embedding_dim
+      rnn_dp = torch.cat((rnn_dp_fw, torch.flip(rnn_dp_bw, [1])), dim=-1)
+      rnn_cp = torch.cat((rnn_cp_fw, torch.flip(rnn_cp_bw, [1])), dim=-1)
+
+      # Attention
+      ## output dim: batch_size x 2*embedding_dim
+      attended_dp, weights_dp = self.attention_dp(rnn_dp, (dp > 0).float())
+      attended_cp, weights_cp = self.attention_cp(rnn_cp, (cp > 0).float())
+
+      # Scores
+      score_dp = self.fc_dp(self.dropout(attended_dp))
+      score_cp = self.fc_cp(self.dropout(attended_cp))
+
+      # Concatenate to variable collection
+      all = torch.cat((stat, score_dp, score_cp), dim=1)
+
+      # Final linear projection
+      out = self.fc_all(self.dropout(all)).squeeze()
+
+      return out, []

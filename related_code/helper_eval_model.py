@@ -21,7 +21,8 @@ models = {'birnn_concat_time_delta',
           'mce_birnn_attention',
           'logistic_regression',
           'ode',
-          'birnn'}
+          'birnn',
+          'birnn_attention'}
 separator='===================================='
 
 if __name__ == '__main__':

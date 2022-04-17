@@ -91,7 +91,8 @@ $ ./train_model.sh
 13) MCE + Attention
 14) Logistic Regression
 15) *ABLATION* RNN only
-16) QUIT
+16) *ABLATION* RNN only + Attention
+17) QUIT
 Which model do you want to train? 2
 ====================================
 Training ODE + RNN (ode_birnn) ...
@@ -122,7 +123,8 @@ $ ./eval_model.sh
 13) MCE + Attention
 14) Logistic Regression
 15) *ABLATION* RNN only
-16) QUIT
+16) *ABLATION* RNN only + Attention
+17) QUIT
 Which model do you want to evaluate? 14
 ====================================
 Evaluating Logistic Regression (logistic_regression) ...

@@ -20,6 +20,7 @@ options=("ODE + RNN + Attention" \
          "MCE + Attention" \
          "Logistic Regression" \
          "*ABLATION* RNN only" \
+         "*ABLATION* RNN only + Attention" \
          "QUIT")
 separator="===================================="
 model=""
@@ -100,6 +101,11 @@ do
             ;;
         "*ABLATION* RNN only")
             model="birnn"
+            modelName=$opt
+            break
+            ;;
+        "*ABLATION* RNN only + Attention")
+            model="birnn_attention"
             modelName=$opt
             break
             ;;
