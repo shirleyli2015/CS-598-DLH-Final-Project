@@ -12,7 +12,7 @@ _Barbieri, Sebastiano et al. “Benchmarking Deep Learning Architectures for Pre
 
 Part of the code was originated from the [repo](https://github.com/sebbarb/time_aware_attention) from the original authors of the publication.
 
-If you are interested to find out more about our reproduction study, please checkout our [presentation](https://uofi.box.com/s/zrpprtxedxl0mi4kshwdu1webz1x7d56) and [final report.](https://raw.githubusercontent.com/shirleyli2015/CS-598-DLH-Final-Project/master/CS-598-DLH-Final-Project-Report.pdf)
+If you want to find out more about our reproduction study, please checkout our [**Presentation**](https://uofi.box.com/s/zrpprtxedxl0mi4kshwdu1webz1x7d56) and [**Final Report**](https://raw.githubusercontent.com/shirleyli2015/CS-598-DLH-Final-Project/master/CS-598-DLH-Final-Project-Report.pdf).
 ## Requirements and Dependencies
 
 Running the code requires Python 3. If you want to run the code directly on your local machine, install the required dependencies below:
