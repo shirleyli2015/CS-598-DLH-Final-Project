@@ -117,6 +117,5 @@ do
 done
 
 # Train specific model.
-cd ./related_code
-python3 ./helper_train_model.py "$model" "$modelName"
+python3 ./related_code/helper_train_model.py "$model" "$modelName"
 exit $?

@@ -8,9 +8,9 @@ import math
 class Hyperparameters:
   '''Hyperparameters'''
   # data
-  mimic_dir = '../mimic-iii-clinical-database-1.4/'
-  data_dir = '../data/'
-  logdir = '../logdir/' # log directory
+  mimic_dir = './mimic-iii-clinical-database-1.4/'
+  data_dir = './data/'
+  logdir = './logdir/' # log directory
 
   # model
   min_count = 100 # words whose occurred less than min_cnt are encoded as OTHER

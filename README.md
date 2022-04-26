@@ -62,14 +62,13 @@ To preprocess the data for training the model(s) in the paper, run these command
 ```
 # Run various pre-processing scripts under related_code directory.
 #
-$ cd <repo>/related_code
-$ python3 1_preprocessing_ICU_PAT_ADMIT.py
-$ python3 2_preprocessing_reduce_charts.py
-$ python3 3_preprocessing_reduce_outputs.py
-$ python3 4_preprocessing_merge_charts_outputs.py
-$ python3 5_preprocessing_CHARTS_PRESCRIPTIONS.py
-$ python3 6_preprocessing_DIAGNOSES_PROCEDURES.py
-$ python3 7_preprocessing_create_arrays.py
+$ python3 related_code/1_preprocessing_ICU_PAT_ADMIT.py
+$ python3 related_code/2_preprocessing_reduce_charts.py
+$ python3 related_code/3_preprocessing_reduce_outputs.py
+$ python3 related_code/4_preprocessing_merge_charts_outputs.py
+$ python3 related_code/5_preprocessing_CHARTS_PRESCRIPTIONS.py
+$ python3 related_code/6_preprocessing_DIAGNOSES_PROCEDURES.py
+$ python3 related_code/7_preprocessing_create_arrays.py
 ```
 ## Training
 

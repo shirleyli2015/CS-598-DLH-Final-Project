@@ -117,6 +117,5 @@ do
 done
 
 # Evaluate specific model.
-cd ./related_code
-python3 ./helper_eval_model.py "$model" "$modelName"
+python3 ./related_code/helper_eval_model.py "$model" "$modelName"
 exit $?
