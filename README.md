@@ -10,9 +10,12 @@ This repository contains code for the reproduction study and additional ablation
 
 _Barbieri, Sebastiano et al. “Benchmarking Deep Learning Architectures for Predicting Readmission to the ICU and Describing Patients-at-Risk.” Scientific reports vol. 10,1 1111. 24 Jan. 2020_, https://doi.org/10.1038/s41598-020-58053-z
 
-Part of the code was originated from the [repo](https://github.com/sebbarb/time_aware_attention) from the original authors of the publication.
+Part of our code was originated from the [repo](https://github.com/sebbarb/time_aware_attention) from the original authors of the publication.
 
-If you want to find out more about our reproduction study, please checkout our [**Presentation**](https://uofi.box.com/s/zrpprtxedxl0mi4kshwdu1webz1x7d56) and [**Final Report**](https://raw.githubusercontent.com/shirleyli2015/CS-598-DLH-Final-Project/master/CS-598-DLH-Final-Project-Report.pdf).
+If you want to find out more about our reproduction study, please checkout the following:
+1. [**Presentation**](https://uofi.box.com/s/zrpprtxedxl0mi4kshwdu1webz1x7d56)
+2. [**Final Report**](https://raw.githubusercontent.com/shirleyli2015/CS-598-DLH-Final-Project/master/CS-598-DLH-Final-Project-Report.pdf)
+
 ## Requirements and Dependencies
 
 Running the code requires Python 3. If you want to run the code directly on your local machine, install the required dependencies below:
