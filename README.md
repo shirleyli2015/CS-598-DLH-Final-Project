@@ -139,8 +139,7 @@ The evaluation time of one model is usually under an hour.
 To obtain odds ratios and risk-scores with credible intervals from the last fully connected layer of the “Attention (concatenated time)” model, run:
 
 ```
-$ cd related_code
-$ python3 bayesian_interpretation.py
+$ python3 related_code/bayesian_interpretation.py
 ```
 ## Pretrained Embedding Weights
 
