@@ -6,7 +6,7 @@
 
 ## Introduction
 
-This repository contains code for the reproduction study and additional ablations for the publication:
+This repository contains code for the reproduction study and additional ablations for the publication (Paper ID: 189):
 
 _Barbieri, Sebastiano et al. “Benchmarking Deep Learning Architectures for Predicting Readmission to the ICU and Describing Patients-at-Risk.” Scientific reports vol. 10,1 1111. 24 Jan. 2020_, https://doi.org/10.1038/s41598-020-58053-z
 
